@@ -1,14 +1,16 @@
 const productService = require('../service/productService');
-const {defaultResponse, productCreated} = require('../constants');
+const {defaultResponse, productMessage} = require('../constants');
 
-module.exports = createProduct = async (req, res) => {
+
+
+let createProduct = async (req, res) => {
     let response = {
         ...defaultResponse
     }
     try {
         const productResponse = await productService.createProduct(req.body);
         response.status = 200;
-        response.message = productCreated.message;
+        response.message = productMessage.Created;
         response.body = productResponse;
 
     } catch (err) {
@@ -19,3 +21,30 @@ module.exports = createProduct = async (req, res) => {
         .send(response);
 
 }
+
+// Product Fetch Controller
+
+let getAllProducts = async (req, res) => {
+    let response = {
+        ...defaultResponse
+    }
+    try {
+        const productResponse = await productService.getAllProducts(req.query);
+        response.status = 200;
+        response.message = productMessage.Fetched;
+        response.body = productResponse;
+
+    } catch (err) {
+        response.message = `Error Form ${err.message}`;
+    }
+    return res
+        .status(response.status)
+        .send(response);
+
+}
+
+
+module.exports = productController = {
+    createProduct,
+    getAllProducts
+};

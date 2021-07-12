@@ -4,8 +4,9 @@ module.exports = {
         message : '',
         body : {}
     }, 
-    productCreated : {
-        message : "Product Created Successfully"
+    productMessage : {
+        Created : "Product Created Successfully",
+        Fetched : "Product Fetch Success"
     },
     joiValidatorError : {
         message : "Invalid Request!"

@@ -11,9 +11,16 @@ let productQuerySchema = Joi.object().keys({
     limit : Joi.string()
 });
 
+let productUpdateSchema = Joi.object().keys({
+    name: Joi.string(),
+    brand : Joi.string(),
+    price : Joi.number()
+});
+
 
 
 module.exports = productSchema = {
     productCreateSchema,
-    productQuerySchema
+    productQuerySchema,
+    productUpdateSchema
 }

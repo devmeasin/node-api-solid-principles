@@ -8,7 +8,12 @@ module.exports = {
         Created : "Product Created Successfully",
         Fetched : "Product Fetch Successfully",
         Updated : "Product Updated Successfully",
+        Deleted : "Product Deleted Successfully",
         NotFound : "Product Not Found",
+    },
+    userMessage : {
+        signUp : "Sign Up Successfully",
+        userExists : "User Already Exists"
     },
     joiValidatorError : {
         message : "Invalid Request!"

@@ -4,6 +4,7 @@ const dotEnv = require('dotenv');
 const cors = require('cors');
 const dbConnection = require('./database/connection');
 const productRoutes = require('./routes/productRoute');
+const userRoutes = require('./routes/userRoutes');
 dotEnv.config();
 
 const app = express();
@@ -14,6 +15,7 @@ dbConnection();
 
 
 app.use('/api/v1/products',productRoutes);
+app.use('/api/v1/user',userRoutes);
 
 
 app.listen(PORT , () => {

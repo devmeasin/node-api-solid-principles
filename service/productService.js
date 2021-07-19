@@ -59,9 +59,25 @@ let productUpdate = async ({id, updateInfo}) => {
     }
 }
 
+// get All Product From Database Service
+let productDelete = async (id) => {
+    try {
+        checkObjectId(id)
+        let product = await Product.findByIdAndDelete(id);
+        if(!product) {
+            throw new Error(productMessage.NotFound);
+        }
+        return formatMongoData(product);
+    } catch (err) {
+        console.log("Something went wrong From  ProductService : productDelete", err.message);
+        throw new Error(err.message);
+    }
+}
+
 module.exports = productService = {
     createProduct,
     getAllProducts,
     getProductByID,
-    productUpdate
+    productUpdate,
+    productDelete
 };

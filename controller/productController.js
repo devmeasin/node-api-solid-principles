@@ -22,7 +22,6 @@ let createProduct = async (req, res) => {
 }
 
 // Product Fetch Controller
-
 let getAllProducts = async (req, res) => {
     let response = {
         ...defaultResponse
@@ -41,7 +40,6 @@ let getAllProducts = async (req, res) => {
         .send(response);
 
 }
-
 
 //Single Product Fetch By ID Controller
 let getProductByID = async (req, res) => {
@@ -63,7 +61,6 @@ let getProductByID = async (req, res) => {
 
 }
 
-
 //Single Product Fetch By ID Controller
 let productUpdate = async (req, res) => {
     let response = {
@@ -84,11 +81,31 @@ let productUpdate = async (req, res) => {
 
 }
 
+//Product Delete By ID Controller
+let productDelete = async (req, res) => {
+    let response = {
+        ...defaultResponse
+    }
+    try {
+         const productResponse = await productService.productDelete(req.params.productID);
+        response.status = 200;
+        response.message = productMessage.Deleted;
+        response.body = productResponse;
+
+    } catch (err) {
+        response.message = `Error Form ${err.message}`;
+    }
+    return res
+        .status(response.status)
+        .send(response);
+
+}
 
 
 module.exports = productController = {
     createProduct,
     getAllProducts,
     getProductByID,
-    productUpdate
+    productUpdate,
+    productDelete
 };
